@@ -7,7 +7,7 @@ docker pull quay.io/biocontainers/trimmomatic:0.39--1
 
 chmod 777 $1
 
-docker run -d -it --rm -v /usr/share/trimmomatic:/adapters/ \
+docker run -it --rm --user $(id -u):$(id -g) -v /usr/share/trimmomatic:/adapters/ \
 -v $1:/data/ quay.io/biocontainers/trimmomatic:0.39--1 \
 trimmomatic SE /data/$2 /data/T_$2 \
 ILLUMINACLIP:/adapters/TruSeq3-SE.fa:2:30:10 \
