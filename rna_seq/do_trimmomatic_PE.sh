@@ -11,6 +11,6 @@ docker run -d -it --rm -v /usr/share/trimmomatic:/adapters/ \
 -v $1:/data/ quay.io/biocontainers/trimmomatic:0.39--1 \
 trimmomatic PE /data/$2 /data/$3 /data/TP_$2 /data/TU_$2 /data/TP_$3 /data/TU_$3 \
 ILLUMINACLIP:/adapters/TruSeq3-PE.fa:2:30:10 \
-MINLEN:36
+MINLEN:36 > $1/results_$2/run.log
 
 
