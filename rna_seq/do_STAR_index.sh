@@ -12,7 +12,7 @@ mkdir $1/genome
 
 chmod 777 $1/genome
 
-docker run -d -it --rm -v $1:/data/ quay.io/biocontainers/star:2.7.0f--0 STAR \
+docker run -it --rm --user $(id -u):$(id -g) -v $1:/data/ quay.io/biocontainers/star:2.7.0f--0 STAR \
 --runThreadN 16\
 --runMode genomeGenerate \
 --genomeDir /data/genome \
