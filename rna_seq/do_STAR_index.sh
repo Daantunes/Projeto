@@ -18,10 +18,8 @@ docker run -d -it --rm -v $1:/data/ quay.io/biocontainers/star:2.7.0f--0 STAR \
 --genomeDir /data/genome \
 --genomeFastaFiles /data/$2 \
 --sjdbGTFfile /data/$3 \
---sjdbOverhang 99
+--sjdbOverhang 99 > $1/results_$2/run.log
 
-echoerr() { printf "%s\n" "$*" >&2; }
-echoerr ERROR
 
 
 
