@@ -8,5 +8,11 @@ docker pull biocontainers/fastqc:v0.11.5_cv3
 
 chmod 777 $1
 
-docker run -it --rm --user $(id -u):$(id -g) -v $1:/data/ biocontainers/fastqc:v0.11.5_cv3 \
-fastqc *.fastq.gz > $1/results_$2/run.log
+#Para correr um background, mas caso haja erro aparece no ficheiro nohup.out
+nohup bash -c "\
+
+docker run --rm --user $(id -u):$(id -g) -v $1:/data/ biocontainers/fastqc:v0.11.5_cv3 \
+fastqc *.fastq.gz \
+
+2>&1 &"
+
