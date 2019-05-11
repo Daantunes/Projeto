@@ -1,6 +1,6 @@
 #!/bin/bash
 if [ "$1" == "-h" ]; then
-  echo "<Pathway to fastq files>"
+  echo "<Pathway to fastq files> <Name of the output directory>"
   exit 0
 fi
 
@@ -8,11 +8,6 @@ docker pull biocontainers/fastqc:v0.11.5_cv3
 
 chmod 777 $1
 
-#Para correr um background, mas caso haja erro aparece no ficheiro nohup.out
-nohup bash -c "\
-
 docker run --rm --user $(id -u):$(id -g) -v $1:/data/ biocontainers/fastqc:v0.11.5_cv3 \
-fastqc *.fastq.gz \
-
-2>&1 &"
+fastqc *.fastq.gz --outdir=$1/$2 > runallfastq.log 2>&1 &
 
