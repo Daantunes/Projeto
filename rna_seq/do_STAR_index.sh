@@ -21,5 +21,11 @@ docker run -it --rm --user $(id -u):$(id -g) -v $1:/data/ quay.io/biocontainers/
 --sjdbOverhang 99 > $1/results_$2/run.log
 
 
+# Retirado de: ftp://ftp.ensembl.org/pub/release-96/fasta/mus_musculus_c57bl6nj/dna/
+# wget ftp://ftp.ensembl.org/pub/release-96/fasta/mus_musculus_c57bl6nj/dna/Mus_musculus_c57bl6nj.C57BL_6NJ_v1.dna.toplevel.fa.gz
+# gunzip Mus_musculus_c57bl6nj.C57BL_6NJ_v1.dna.toplevel.fa.gz &
 
+# Retirado de: ftp://ftp.ensembl.org/pub/release-96/gtf/mus_musculus_c57bl6nj
+# wget ftp://ftp.ensembl.org/pub/release-96/gtf/mus_musculus_c57bl6nj/Mus_musculus_c57bl6nj.C57BL_6NJ_v1.96.gtf.gz
+# gunzip Mus_musculus_c57bl6nj.C57BL_6NJ_v1.96.gtf.gz &
 
