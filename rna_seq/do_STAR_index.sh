@@ -12,14 +12,13 @@ mkdir $1/genome
 
 chmod 777 $1/genome
 
-docker run -it --rm --user $(id -u):$(id -g) -v $1:/data/ quay.io/biocontainers/star:2.7.0f--0 STAR \
+docker run --rm --user $(id -u):$(id -g) -v $1:/data/ quay.io/biocontainers/star:2.7.0f--0 STAR \
 --runThreadN 16 \
 --runMode genomeGenerate \
 --genomeDir /data/genome \
 --genomeFastaFiles /data/$2 \
 --sjdbGTFfile /data/$3 \
---sjdbOverhang 99 > $1/results_$2/run.log
-
+--sjdbOverhang 99 > /data/genome/runSTARindex.log 2>&1 &
 
 # Retirado de: ftp://ftp.ensembl.org/pub/release-96/fasta/mus_musculus_c57bl6nj/dna/
 # wget ftp://ftp.ensembl.org/pub/release-96/fasta/mus_musculus_c57bl6nj/dna/Mus_musculus_c57bl6nj.C57BL_6NJ_v1.dna.toplevel.fa.gz
