@@ -18,7 +18,7 @@ docker run --rm --user $(id -u):$(id -g) -v $1:/data/ quay.io/biocontainers/star
 --genomeDir /data/genome \
 --genomeFastaFiles /data/$2 \
 --sjdbGTFfile /data/$3 \
---sjdbOverhang 99 > /data/genome/runSTARindex.log 2>&1 &
+--sjdbOverhang 99 > $1/genome/runSTARindex.log 2>&1 &
 
 # Retirado de: ftp://ftp.ensembl.org/pub/release-96/fasta/mus_musculus_c57bl6nj/dna/
 # wget ftp://ftp.ensembl.org/pub/release-96/fasta/mus_musculus_c57bl6nj/dna/Mus_musculus_c57bl6nj.C57BL_6NJ_v1.dna.toplevel.fa.gz
