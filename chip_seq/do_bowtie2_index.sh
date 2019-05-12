@@ -2,7 +2,7 @@
 #12-05-2019
 
 if [ "$1" == "-h" ]; then
-  echo "<Pathway to fastq files> <Name of the fastq file>"
+  echo "<Pathway to fastq files> <Name of the fasta file>"
   exit 0
 fi
 
