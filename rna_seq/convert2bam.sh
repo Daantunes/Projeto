@@ -2,22 +2,16 @@
 #12-05-2019
 
 if [ "$1" == "-h" ]; then
-  echo "<Pathway to fastq files> <Name of the SAM file> <Name os the GTF/GFF file>"
+  echo "<Pathway to fastq files> <Name of the SAM file>"
   exit 0
 fi
 
-docker pull biocontainers/samtools:1.9--h8571acd_11
+docker pull docker pull quay.io/biocontainers/samtools:1.9--h8571acd_11
 
 chmod 777 $1
 
-docker run --rm --user $(id -u):$(id -g) -v $1:/data/ biocontainers/samtools:1.9--h8571acd_11 htseq-count \
--m=intersection-strict --stranded=no -t=gene $2 $3
+docker run --rm --user $(id -u):$(id -g) -v $1:/data/ quay.io/biocontainers/samtools:1.9--h8571acd_11 samtools view -Sb $2 > $2.bam \
  > runconvert2bam.log 2>&1 &
- 
- 
-
-docker run -d --rm --user $(id -u):$(id -g) -t -v /home/tbarata/RNA_seq_analysis_20181019/Results/BJs/STAR_alignments/:/data/
-biocontainers/samtools:v1.3_cv2 samtools view -Sb $2 > $2.bam
 
  # samtools requires us to run everything inside docker with bash -c 'commands' (it's needed because of the way the container script 
  #was build)
