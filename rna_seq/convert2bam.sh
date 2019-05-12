@@ -10,7 +10,8 @@ docker pull docker pull quay.io/biocontainers/samtools:1.9--h8571acd_11
 
 chmod 777 $1
 
-docker run --rm --user $(id -u):$(id -g) -v $1:/data/ quay.io/biocontainers/samtools:1.9--h8571acd_11 samtools view -Sb $2 > $2.bam \
+docker run --rm --user $(id -u):$(id -g) -v $1:/data/ quay.io/biocontainers/samtools:1.9--h8571acd_11 samtools \
+view -Sb /data/$2 -o /data/$2.bam \
  > runconvert2bam.log 2>&1 &
 
  # samtools requires us to run everything inside docker with bash -c 'commands' (it's needed because of the way the container script 
