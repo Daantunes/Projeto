@@ -7,10 +7,6 @@ docker pull quay.io/biocontainers/trimmomatic:0.39--1
 
 chmod 777 $1
 
-cp /adapters/TruSeq2-SE.fa $1/TruSeqALL-SE.fa
-printf "\n" >> $1/TruSeqALL-SE.fa
-cat /adapters/TruSeq3-SE.fa >> $1/TruSeqALL-SE.fa
-
 docker run --rm --user $(id -u):$(id -g) -v /usr/share/trimmomatic:/adapters/ \
 -v $1:/data/ quay.io/biocontainers/trimmomatic:0.39--1 \
 trimmomatic SE /data/$2 /data/T_$2 \
