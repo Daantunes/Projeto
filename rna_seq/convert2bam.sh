@@ -1,5 +1,6 @@
 #!/bin/bash
-#
+#12-05-2019
+
 if [ "$1" == "-h" ]; then
   echo "<Pathway to fastq files> <Name of the SAM file> <Name os the GTF/GFF file>"
   exit 0
