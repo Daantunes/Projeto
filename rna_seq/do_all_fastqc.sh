@@ -1,4 +1,6 @@
 #!/bin/bash
+#24-04-2019
+
 if [ "$1" == "-h" ]; then
   echo "<Pathway to fastq files> <Name of the output directory>"
   exit 0
