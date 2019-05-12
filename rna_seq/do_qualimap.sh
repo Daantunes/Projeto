@@ -1,4 +1,6 @@
 #!/bin/bash
+#11-05-2019
+
 if [ "$1" == "-h" ]; then
   echo "<Pathway to BAM file> <Name of the BAM file> <Name of the GTF file>"
   exit 0
