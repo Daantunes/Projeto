@@ -9,12 +9,12 @@ docker pull quay.io/biocontainers/trimmomatic:0.39--1
 
 chmod 777 $1
 
-docker run --rm --user $(id -u):$(id -g) -v /usr/share/trimmomatic:/adapters/ \
--v $1:/data/ quay.io/biocontainers/trimmomatic:0.39--1 \
-trimmomatic SE /data/$2 /data/T_$2 \
-ILLUMINACLIP:$1/TruSeqALL-SE.fa:2:0:10 \
+docker_id=$(docker run -d --rm --user $(id -u):$(id -g) -e INPUT=$2 -v $1:/data/ quay.io/biocontainers/trimmomatic:0.39--1 \
+bash -c "trimmomatic SE /data/$INPUT /data/T_$INPUT \
+ILLUMINACLIP:/data/TruSeqALL-SE.fa:2:0:10 \
 LEADING:0 \
 TRAILING:0 \
 SLIDINGWINDOW:0:0 \
-MINLEN:36 > run$2.log 2>&1 &
+MINLEN:36 > /data/run$INPUT.log &")
 
+echo $docker_id
