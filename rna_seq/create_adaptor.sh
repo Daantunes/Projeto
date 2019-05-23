@@ -10,3 +10,6 @@ cp /adapters/TruSeq2-SE.fa $1/TruSeqALL-SE.fa
 chmod 777 $1/TruSeqALL-SE.fa
 printf "\n" >> $1/TruSeqALL-SE.fa
 cat /adapters/TruSeq3-SE.fa >> $1/TruSeqALL-SE.fa
+
+
+#/usr/local/share/trimmomatic/adapters
