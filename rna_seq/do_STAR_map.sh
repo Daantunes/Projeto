@@ -10,12 +10,17 @@ mkdir $1/results_$2
 chmod 777 $1/genome
 chmod 777 $1/results_$2
 
-docker run --rm --user $(id -u):$(id -g) -v $1:/data/ quay.io/biocontainers/star:2.7.0f--0 STAR \
+docker_id=$(docker run -d --rm --user $(id -u):$(id -g) -e INPUT=$2 -v $1:/data/ quay.io/biocontainers/star:2.7.0f--0 \
+bach -c "STAR \
 --runThreadN 16 \
 --genomeDir /data/genome \
---readFilesIn /data/$2 \
+--readFilesIn /data/$INPUT \
 --readFilesCommand gunzip -c \
---outFileNamePrefix /data/results_$2/ > $1/results_$2/run.log 2>&1 &
+--outFileNamePrefix /data/results_$INPUT/ > /data/results_$INPUT/run.log &")
+
+echo $docker_id
+
+
 
 
 
