@@ -17,4 +17,4 @@ docker run -d --rm --user $(id -u):$(id -g) -v $1:/data/ quay.io/biocontainers/b
 -p 15 -q --no-unal \
 -x /data/genome/$2 \
 -U /data/$3 \
--S /data/results/counts_$3.sam > /data/results/counts_$3.txt'
+-S /data/results/counts_$3.sam'
