@@ -14,4 +14,4 @@ rnaseq -bam /data/$2 \
 -outformat PDF:HTML \
 -outfile /data/Qualimap_$2 \
 -outdir /data/results_qualimap \
---java-mem-size=5G > $1/results_qualimap/run.log 2>&1 &
+--java-mem-size=5G > $1/results_qualimap/run.log 2>&1 & 
