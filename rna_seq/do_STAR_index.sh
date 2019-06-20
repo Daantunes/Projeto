@@ -18,7 +18,6 @@ docker run --rm --user $(id -u):$(id -g) -v $1:/data/ quay.io/biocontainers/star
 --genomeDir /data/genome \
 --genomeFastaFiles /data/$2 \
 --sjdbGTFfile /data/$3 \
---outFileNamePrefix /data/genome/ \
 --sjdbOverhang 50 > $1/genome/runSTARindex.log 2<&1 &
 
 
