@@ -2,7 +2,7 @@
 #27-4-2019
 if [ "$1" == "-h" ]; then
 	echo "<Pathway to fastq files> <Name of the genome file> <Name of the annotation file>"
-	echo "Insert unziped files"
+	echo "Insert unzipped files"
 	exit 0
 fi
 
