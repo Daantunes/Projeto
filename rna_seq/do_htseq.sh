@@ -10,23 +10,9 @@ docker pull quay.io/biocontainers/htseq:0.11.2--py27h637b7d7_1
 
 chmod 777 $1
 
-docker run -d --rm --user $(id -u):$(id -g) -v $1:/data/ quay.io/biocontainers/htseq:0.11.2--py27h637b7d7_1 htseq-count \
+docker run --rm --user $(id -u):$(id -g) -v $1:/data/ quay.io/biocontainers/hts$
 -m=intersection-strict \
 --stranded=no \
 -t=gene /data/$2 /data/$3 \
-> $1/htseq_counts.txt'
+> $1/htseq_counts.readcounts 2> $1/htseq_counts.log &
 
-
-
-#docker run -d --rm --user $(id -u):$(id -g) -v /home/dantunes/rna_seq/results_T_SRR3737444.fastq.gz:/data/ quay.io/biocontainers/htseq:0.11.2--py27h637b7d7_1 \
-#bash -c 'htseq-count \
-#-m=intersection-strict \
-#--stranded=no \
-#-t=gene /data/Aligned.out.sam /data/Mus_musculus_c57bl6nj.C57BL_6NJ_v1.96.gtf \
-#> /data/htseq_counts.txt'
-docker run -d --rm --user $(id -u):$(id -g) -v /home/dantunes/rna_seq/results_T_SRR3737444.fastq.gz:/data/ quay.io/biocontainers/htseq:0.11.2--py27h637b7d7_1 
-htseq-count 
--m=intersection-strict 
---stranded=no 
--t=gene /data/Aligned.out.sam /data/Mus_musculus_c57bl6nj.C57BL_6NJ_v1.96.gtf 
-> /home/dantunes/rna_seq/results_T_SRR3737444.fastq.gz/htseq_counts2.txt
