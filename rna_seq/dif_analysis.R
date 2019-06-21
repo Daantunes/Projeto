@@ -53,13 +53,3 @@ out[down,]
 up <- out$table$FDR <= 0.05 & out$table$logFC >= 1
 dim(out[up,])
 out[up,]
-
-
-#Compare which genes are the same with both methods
-deseq.up=row.names(resFDR.up)
-edger.up=row.names(out[up,])
-deseq.up[deseq.up %in% edger.up]
-
-deseq.down=row.names(resFDR.down)
-edger.down=row.names(out[down,])
-deseq.down[deseq.down %in% edger.down]
