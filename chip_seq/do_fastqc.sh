@@ -8,6 +8,7 @@ fi
 
 docker pull biocontainers/fastqc:v0.11.5_cv3
 
+mkdir $1/fastqc
 chmod 777 $1
 
 docker run --rm --user $(id -u):$(id -g) -v $1:/data/ biocontainers/fastqc:v0.11.5_cv3 \
