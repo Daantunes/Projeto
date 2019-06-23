@@ -13,8 +13,9 @@ chmod 777 $1
 mkdir -p $1/results
 chmod 777 $1/results
 
-docker run -d --rm --user $(id -u):$(id -g) -v $1:/data/ quay.io/biocontainers/bowtie2:2.3.4.3--py36h2d50403_0 bash -c 'bowtie2 \
+docker run --rm --user $(id -u):$(id -g) -v $1:/data/ quay.io/biocontainers/bowtie2:2.3.4.3--py36h2d50403_0 bowtie2 \
 -p 15 -q --no-unal \
 -x /data/genome/$2 \
 -U /data/$3 \
--S /data/results/counts_$3.sam'
+-S /data/results/counts_$3.sam > $1/results/aln$3.log 2>&1 &
+
