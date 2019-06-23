@@ -10,5 +10,5 @@ docker pull biocontainers/fastqc:v0.11.5_cv3
 
 chmod 777 $1
 
-docker run --rm --user $(id -u):$(id -g) -v $1:/data/ biocontainers/fastqc:v0.11.5_cv3 fastqc $2 \
- > run$2.log 2>&1 &
+docker run --rm --user $(id -u):$(id -g) -v $1:/data/ biocontainers/fastqc:v0.11.5_cv3 \
+fastqc -o /data/fastqc /data/$2 > $1/fastqc/run$2.log 2>&1 &
