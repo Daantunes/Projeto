@@ -2,7 +2,7 @@
 #13-06-2019
 
 if [ "$1" == "-h" ]; then
-  echo "<Pathway to index files> <Name of the sam/bam file> <Name of the control sam/bam file"
+  echo "<Pathway to files> <Name of the sam/bam file> <Name of the control sam/bam file"
   exit 0
 fi
 
