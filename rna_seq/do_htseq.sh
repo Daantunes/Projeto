@@ -10,7 +10,7 @@ docker pull quay.io/biocontainers/htseq:0.11.2--py27h637b7d7_1
 
 chmod 777 $1
 
-docker run --rm --user $(id -u):$(id -g) -v $1:/data/ quay.io/biocontainers/hts$
+docker run --rm --user $(id -u):$(id -g) -v $1:/data/ quay.io/biocontainers/htseq:0.11.2--py27h637b7d7_1 htseq-count \
 -m=intersection-strict \
 --stranded=no \
 -t=gene /data/$2 /data/$3 \
