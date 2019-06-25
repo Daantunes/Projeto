@@ -17,5 +17,5 @@ grep "^ENS" $1/results_T_SRR3737444.fastq.gz/htseq_counts.readcounts > /$1/final
 
 echo "geneid WT1 WT2 WT3 KO1 KO2 KO3" > $1/final_results/COUNTS.tab
 
-paste $1/final_results/*.readcounts | cut -f1,2,4,6,8,10,12 >> $1/final_counts/COUNTS.tab
+paste $1/final_results/*.readcounts | cut -f1,2,4,6,8,10,12 >> $1/final_results/COUNTS.tab
 
