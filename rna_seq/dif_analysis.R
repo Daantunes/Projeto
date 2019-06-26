@@ -53,3 +53,11 @@ out[down,]
 up <- out$table$FDR <= 0.05 & out$table$logFC >= 1
 dim(out[up,])
 out[up,]
+
+symbol.down.all = mapIds(org.Mm.eg.db, keys=row.names(out[down,]), column="SYMBOL", keytype="ENSEMBL", multiVals="first")
+symbol.down=symbol.down.all[which(!is.na(symbol.down.all))]
+length(symbol.down)
+
+symbol.up.all = mapIds(org.Mm.eg.db, keys=row.names(out[up,]), column="SYMBOL", keytype="ENSEMBL", multiVals="first")
+symbol.up.all[which(!is.na(symbol.up.all))]
+length(symbol.up)
