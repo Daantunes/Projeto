@@ -1,7 +1,9 @@
 # Projeto
 
 Scripts used in the RNA-seq:
+
       Bash script:
+      
         *do_fastqc.sh*
         *create_adaptor.sh*
         *do_trimmomatic_SE.sh*
@@ -9,7 +11,9 @@ Scripts used in the RNA-seq:
         *do_STAR_map.sh*
         *do_htseq.sh*
         *compilation_counts.sh*
+        
       R script:
+      
         *dif_analysis.R*
         
 Scripts used in the ChIP-seq:
