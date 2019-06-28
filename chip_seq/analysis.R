@@ -11,11 +11,11 @@ library(ggplot2)
 txdb <- TxDb.Mmusculus.UCSC.mm10.knownGene
 
 # Get annotations and create a piechart
-peak <- readPeakFile('data/input/counts_T_SRR3737445.fastq.gz.sam_peaks.narrowPeak.bed')
+peak <- readPeakFile('counts_T_SRR3737445.fastq.gz.sam_peaks.narrowPeak.bed')
 
 peakAnno <- annotatePeak(peak, TxDb=txdb, annoDb="org.Mm.eg.db")
 df <- data.frame(
-label=c('Promoter (27.45%)', '5 UTR (0.09%)', '3 UTR (0.91%)' , 'Exon (3.33%)', 'Intron (35.70%)', 'Downstream (0.89%)', 'Distal Intergenetics (31.63%)'),
+label=c('Promoter (27.45%)', '5 UTR (0.09%)', '3 UTR (0.91%)' , 'Exon (3.33%)', 'Intron (35.70%)', 'Downstream (0.89%)', 'Distal Intergenic (31.63%)'),
 perc=c(19.07339251+4.76293570+3.61550119,0.08659883,0.90928772,1.21238363+2.12167136,13.24962113+22.45074691,0.88763802,31.63022299))
 
 #Create file with piechart
@@ -44,7 +44,7 @@ m.anno <- getAnnotation(mouse)
 
 
 extraCols_narrowPeak <- c(signalValue = "numeric", pValue = "numeric", qValue = "numeric", peak = "integer")
-gr_narrowPeak <- import("data/input/counts_T_SRR3737445.fastq.gz.sam_peaks.narrowPeak", format = "BED", extraCols = extraCols_narrowPeak)
+gr_narrowPeak <- import("counts_T_SRR3737445.fastq.gz.sam_peaks.narrowPeak", format = "BED", extraCols = extraCols_narrowPeak)
 annotatedPeak <- annotatePeakInBatch(gr_narrowPeak,AnnotationData = m.anno)
 
 genes <- genes(txdb)
@@ -67,21 +67,22 @@ length(rna)
 
 
 #Create file with venn diagram
-pdf('venn.pdf',height=6,width=6)
+pdf('venn.pdf',height=7,width=7)
 venn.plot <- draw.pairwise.venn(area1           = length(rna),
                                 area2           = length(chip),
                                 cross.area      = length(intersect(rna, chip)),
                                 category        = c("Differentially \n expressed \n genes", "Genes with Sox2 \n occupancy within \n 10 kb of the TSS"),
                                 fill            = c("orange", "blue"),
                                 lty             = "blank",
-                                cex             = 1.2,
-                                cat.cex         = 1.2,
+                                cex             = 3,
+                                cat.cex         = 2,
                                 cat.pos         = c(360, 25),
                                 cat.dist        = 0.05,
-                                cat.just        = list(c(0.45, 0.5), c(0.8, 0)),
+                                cat.just        = list(c(0.65, 0.55), c(0.54, 0.2)),
                                 ext.pos         = 2,
                                 ext.dist        = -0.04,
                                 ext.length      = 0.9,
                                 ext.line.lwd    = 2)
 
 dev.off()
+
